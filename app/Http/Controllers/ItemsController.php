@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Item;
+
 class ItemsController extends Controller
 {
     /**
@@ -42,6 +44,17 @@ class ItemsController extends Controller
         return view('items.create', [
             'keyword' => $keyword,
             'items' => $items,
+        ]);
+    }
+
+    public function show($id)
+    {
+        $item = Item::find($id);
+        $want_users = $item->want_users;
+
+        return view('items.show', [
+            'item' => $item,
+            'want_users' => $want_users,
         ]);
     }
 
