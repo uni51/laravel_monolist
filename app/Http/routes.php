@@ -22,6 +22,9 @@ Route::get('login', 'Auth\AuthController@getLogin')->name('login.get');
 Route::post('login', 'Auth\AuthController@postLogin')->name('login.post');
 Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
+// ランキング
+Route::get('ranking/want', 'RankingController@want')->name('ranking.want');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('items', 'ItemsController', ['only' => ['create', 'show']]);
     Route::post('want', 'ItemUserController@want')->name('item_user.want');
